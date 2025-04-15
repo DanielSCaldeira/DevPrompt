@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+    assembly="PortalFinanceiro.Model"
+    namespace="PortalFinanceiro.Model"
+    default-lazy="true"
+    default-cascade="none">
+  
+  <typedef class="FuncefEngine.NHibernateHelpers.ZeroOneType, FuncefEngine" name="ZeroOneType"/>
+  <class name="TipoAtoDecisorio" table="TIPO_ATO_DECISORIO" schema="CORE_PORTAL_FINANCEIRO">
+    <id name="Id" column="ID_ATO_DECISORIO">
+      <generator class="sequence">
+        <param name="sequence">SQ_TIPO_ATO_DECISORIO</param>
+      </generator>
+    </id>
+    <property name="Nome" column="DS_ATO_DECISORIO" />
+    <property name="Ativo" column="IN_ATIVO" type="ZeroOneType"/>
+    <property name="Tipo" column="ID_TIPO_DESTACAM" />
+  </class>
+</hibernate-mapping>
+

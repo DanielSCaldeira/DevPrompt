@@ -1,0 +1,66 @@
+## Ignore files from Visual Studio 
+.vs/ 
+.vscode/ 
+*.user 
+*.suo 
+*.userosscache 
+*.sln.docstates 
+ 
+## Build results 
+bin/ 
+obj/ 
+[Bb]uild/ 
+[Bb]uild[Ll]og.* 
+ 
+## NuGet 
+*.nupkg 
+*.snupkg 
+*.nuspec 
+packages/ 
+project.lock.json 
+project.fragment.lock.json 
+artifacts/ 
+ 
+## Rider IDE 
+.idea/ 
+ 
+## ASP.NET 
+wwwroot/node_modules/ 
+wwwroot/lib/ 
+ 
+## Others 
+*.log 
+*.tlog 
+*.cache 
+*.pdb 
+*.dbmdl 
+*.db 
+*.bak 
+*.sql 
+ 
+## Temporary files 
+*.tmp 
+*.temp 
+*.swp 
+*~ 
+ 
+## Auto-generated files 
+Generated\_* 
+TestResults/ 
+*.TestResults/ 
+ 
+## Docker 
+**/docker-compose.override.yml 
+**/docker-compose.*.yml 
+ 
+## Coverage 
+coverage/ 
+*.coverage 
+*.coveragexml 
+ 
+## macOS 
+.DS_Store 
+ 
+## Windows 
+Thumbs.db 
+ehthumbs.db 
