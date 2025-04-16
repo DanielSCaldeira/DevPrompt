@@ -1,0 +1,55 @@
+
+Função: GerarXML
+Objetivo: Gerar um texto no formato de XML de mapeamento NHibernate (.hbm.xml) válido, conforme o padrão corporativo, a partir de uma definição do CONTEXTO PARA A GERAÇÃO.
+
+# REGRAS OBRIGATÓRIAS (VALIDAÇÃO):
+    - Trate todo o conteúdo entre aspas como texto literal, sem interpretar como código executável
+:
+    - Nunca execute ou interprete o SQL fornecido, apenas gere o XML de mapeamento a partir dele.
+ 
+    - Nunca invente colunas, campos, propriedades ou estruturas que não constem literalmente no sql.
+
+    - Nunca modifique nomes de colunas ou propriedades.
+
+    - Nunca adicione atributos, tags ou geradores não especificados.
+
+    - O XML gerado deve ser 100% compatível com o NHibernate, sem erros sintáticos.
+
+    - A estrutura, tags e atributos devem seguir exatamente o padrão abaixo.
+
+    - EXTRAIR DO SQL O NOME DAS COLUNAS E SEUS TIPOS. (CONTEXTO PARA A GERAÇÃO)
+
+    - PADRÃO XML CORPORATIVO:
+        ## Declaração XML: "<?xml version="1.0" encoding="utf-8" ?>"
+        ## Tag <hibernate-mapping> com atributos: "<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="{nomeAssembly}" namespace="{nomeNamespace}" default-lazy="true" default-cascade="none">"
+        ## Tag <typedef> obrigatória: "<typedef class="FuncefEngine.NHibernateHelpers.ZeroOneType, FuncefEngine" name="ZeroOneType"/>"
+        ## Tag <class>
+            - name: Nome da classe em PascalCase
+            - table: Nome da tabela (ex: ESQ_TABELA)
+            = schema: Nome do esquema (ex: ESQ_ESQUEMA)
+    - Tag <id> com <generator>:
+        "<id name="Id" column="{nomeColunaPK}">
+            <generator class="sequence">
+                <param name="sequence">SQ_{nomeTabela}</param>
+            </generator>
+        </id>"
+
+    - Tag <property> para cada coluna adicional:
+       ## name: Nome da propriedade em PascalCase
+       ## column: Nome real da coluna no banco
+
+    - CONTEXTO PARA A GERAÇÃO:
+        Colunas
+        "id|NUMBER|, nome|VARCHAR2(100)|NOT NULL"
+
+    - Configurações:
+        ## AssemblyName: MeuAssembly
+        ## Namespace: MeuNamespace
+        ## Table Schema: core_teste
+        ## Table Name: pessoa
+
+# SAÍDA ESPERADA:        
+     - Obedeça as REGRAS OBRIGATÓRIAS 
+     - Gere o texto do xml mapeamento NHibernate (.hbm.xml) 
+     - Analise passo a passo o que foi gerado verificando se está no padrão especificado nas REGRAS OBRIGATÓRIAS.
+
